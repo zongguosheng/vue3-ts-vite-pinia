@@ -64,9 +64,10 @@ export const asyncRoutes = [
     meta: { hidden: true }
   }
 ]
-const creatRouter = () => {
+console.log('import.meta.env.VITE_BASE_API', import.meta.env.VITE_BASE_API)
+const creatRouters = () => {
   return createRouter({
-    history: createWebHistory(import.meta.env.VITE_BASE_API),
+    history: createWebHistory(),
     routes: constantRoutes,
     scrollBehavior(to, from, savedPosition) {
       // 始终滚动到顶部
@@ -78,10 +79,10 @@ const creatRouter = () => {
     }
   })
 }
-let router = creatRouter()
+let router = creatRouters()
 export  function resetRouter():void {
   sessionStorage.setItem('user','')
-  router = creatRouter()
+  router = creatRouters()
   // store.commit('set_allRoutes',[])
 }
 export default router

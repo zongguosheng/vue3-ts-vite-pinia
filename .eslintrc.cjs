@@ -10,7 +10,10 @@ module.exports = {
     "@vue/eslint-config-prettier"
   ],
   "env": {
-    "vue/setup-compiler-macros": true
+    "vue/setup-compiler-macros": true,
+    "browser": true, // browser global variables
+    "es2021": true, // adds all ECMAScript 2021 globals and automatically sets the ecmaVersion parser option to 12.
+    "node": true,
   },
   "overrides": [
     {
@@ -21,5 +24,9 @@ module.exports = {
         "plugin:cypress/recommended"
       ]
     }
-  ]
+  ],
+  "rules": {
+    "semi": ['error', 'never'],
+    "quotes": ['error', 'single']
+  }
 }

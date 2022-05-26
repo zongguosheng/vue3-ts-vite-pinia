@@ -10,7 +10,7 @@ import VueI18n from '@intlify/vite-plugin-vue-i18n'
 
 // import { loadEnv, createProxy } from "./src/utils/load-env"
 // const { VITE_URL, VITE_BASE_URL, VITE_ZIP_NAME } = loadEnv(mode)
-const mockServerPort = 9599
+const mockServerPort = 9527
 // https://vitejs.dev/config/
 export default defineConfig({
   base:'./',
@@ -35,13 +35,12 @@ export default defineConfig({
     hmr:true, //开启热更新
     host: "0.0.0.0",
     proxy: {
-      "/dev-api": {
-        // target: `http://127.0.0.1:${mockServerPort}/mock-api/v1`, // 后台接口
-        target: `http://127.0.0.1:9527/mock-api/v1`, // 后台接口
+      "/mock-api": {
+        target: `http://127.0.0.1:${mockServerPort}/mock-api`, // 后台接口
         changeOrigin: true,
         secure: false, // 如果是https接口，需要配置这个参数
         // ws: true, //websocket支持
-        rewrite: (path) => path.replace(/^\/dev-api/, ''),
+        rewrite: (path) => path.replace(/^\/mock-api/, ''),
       },
     },
   },
