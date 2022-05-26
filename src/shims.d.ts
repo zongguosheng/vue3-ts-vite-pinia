@@ -30,7 +30,7 @@ interface ImportMeta {
   readonly env: ImportMetaEnv
 }
 
-
+declare module 'path-browserify'
 // TODO: remove this part after vue-count-to has its typescript file
 declare module 'path-to-regexp'
 declare module 'js-cookie'

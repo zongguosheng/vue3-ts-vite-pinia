@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-import path from 'path';
+import path from 'path-browserify'
 import { fileURLToPath, URL } from 'url'
 import Fuse from 'fuse.js'
 import { ref, onBeforeMount, nextTick, computed, onMounted, watch, defineProps, defineEmits } from 'vue'
@@ -42,10 +42,6 @@ import { useRouter, useRoute } from 'vue-router'
 import type { RouteRecordRaw, _RouteRecordBase } from 'vue-router'
 import { permissionStore } from '@/stores/modules/permission'
 import { appModule } from '@/stores/modules/app'
-// import { Component, Vue, Watch } from 'vue-property-decorator'
-// import { RouteConfig } from 'vue-router'
-// import { AppModule } from '@/store/modules/app'
-// import { PermissionModule } from '@/store/modules/permission'
 import i18n from '@/lang' // Internationalization
 import { useI18n } from 'vue-i18n'
 const search = ref<string>('')
@@ -107,6 +103,7 @@ const close = () => {
   options.value = []
   show.value = false
 }
+console.log('', )
 const change = (route: RouteRecordRaw) => {
   router.push(route.path).catch(err => {
     console.log('err', err)
