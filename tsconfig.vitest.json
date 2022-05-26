@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": [],
+    "paths": {
+      "@/*": [ "src/*" ]
+    },
+    "types": ["node", "jsdom", "element-plus", "@intlify/vite-plugin-vue-i18n/client"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "src/icons/index.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
