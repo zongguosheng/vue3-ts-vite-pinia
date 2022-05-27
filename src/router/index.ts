@@ -10,9 +10,9 @@ export const constantRoutes:Array<RouteRecordRaw> = [
     children: [
       {
         path: '/home',
-        name: 'home',
+        name: 'Home',
         component: () => import('@/views/home.vue'),
-        meta: { title: 'dashboard', icon: 'dashboard', affix: true }
+        meta: { title: 'home', icon: 'dashboard', affix: true }
       }
     ]
   },
@@ -20,17 +20,17 @@ export const constantRoutes:Array<RouteRecordRaw> = [
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login/index.vue'),
-    meta: { title: '登录' }
+    meta: { hidden: true }
   },
   {
-    path: '/about',
+    path: '/list',
     component: Layout,
     children: [
       {
         path: 'index',
-        component: () => import(/* webpackChunkName: "documentation" */ '@/views/AboutView.vue'),
+        component: () => import('@/views/list/index.vue'),
         name: 'about',
-        meta: { title: 'documentation', icon: 'documentation' } // affix: true
+        meta: { title: 'list', icon: 'documentation' } // affix: true
       }
     ]
   },

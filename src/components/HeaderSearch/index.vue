@@ -89,7 +89,6 @@ watch(
   }
 )
 onMounted(() => {
-  console.log('headerserch')
   searchPool.value = generateRoutes(routes.value)
 })
 const click = () => {
@@ -103,7 +102,6 @@ const close = () => {
   options.value = []
   show.value = false
 }
-console.log('', )
 const change = (route: RouteRecordRaw) => {
   router.push(route.path).catch(err => {
     console.log('err', err)
@@ -137,11 +135,8 @@ const generateRoutes = (routes: RouteRecordRaw[], basePath = '/', prefixTitle: s
     if (router.meta && router.meta.hidden) {
         continue
     }
-    console.log('basePath', basePath)
-    console.log('router.path', path.resolve(basePath, router.path))
     const data: RouteRecordRaw = {
-      // fileURLToPath(new URL(router.path, basePath))
-      // path: relative(basePath, router.path),
+      path: path.resolve(basePath, router.path),
       meta: {
         title: [...prefixTitle]
       }

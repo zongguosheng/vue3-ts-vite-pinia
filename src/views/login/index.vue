@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="login-form">
       <div class="login-left">
-        <!-- <img src="~@/assets/images/login-form-user.jpg" /> -->
+        <Delete style="width: 1em; height: 1em; margin-right: 8px" />
       </div>
       <div class="login-right">
         <el-form ref="ruleFormRef" :model="form.user" :rules="form.rules" auto-complete="on" label-position="left">
@@ -10,6 +10,11 @@
             <!-- <img src="~@/assets/images/login-logo.png" class="title-logo" /> -->
             <h3 class="title">{{ $t('login.title') }}</h3>
           </div>
+          <el-form-item prop="ss">
+            <el-input v-model="input" placeholder="Please input">
+            <template #prepend>Http://</template>
+            </el-input>
+          </el-form-item>
           <el-form-item prop="username">
             <el-input
               ref="username"
@@ -67,6 +72,7 @@
 
 <script lang="ts" setup>
 import { onBeforeMount, ref, onMounted, reactive, nextTick } from 'vue'
+
 import type { ElForm } from 'element-plus'
 import { useRoute, useRouter } from "vue-router"
 import { useStore } from "@/stores/modules/user"
@@ -79,6 +85,7 @@ const user = useStore()
 const loading = ref<Boolean>(false)
 const capsTooltip = ref<Boolean>(false)
 const passwordType = ref<string>('password')
+const input = ref<string>('password')
 const showDialog = ref<Boolean>(false)
 const form = reactive({
   user: {

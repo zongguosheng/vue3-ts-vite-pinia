@@ -29,6 +29,8 @@
 <script lang="ts" setup>
 import { computed, onBeforeMount, onMounted, ref, } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import SidebarItem from './SidebarItem.vue'
+import SidebarLogo from './SidebarLogo.vue'
 import variables from '@/styles/variables.module.scss'
 import { appModule } from '@/stores/modules/app'
 import { permissionStore } from '@/stores/modules/permission'
@@ -61,8 +63,10 @@ const activeMenu = computed(() => {
   }
   return path
 })
+onMounted(() => {
+  console.log('routes', routes)
+})
 const isCollapse = computed(() => {
-  console.log('!sidebar.value.opened', !sidebar.value.opened)
   return !sidebar.value.opened
 })
 </script>

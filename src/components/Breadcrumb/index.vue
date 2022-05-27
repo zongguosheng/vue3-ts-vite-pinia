@@ -45,7 +45,7 @@ const getBreadcrumb = () => {
   let matched = route.matched.filter((item) => item.meta && item.meta.title)
   const first = matched[0]
   if (!isDashboard(first)) {
-    matched = [{ path: '/dashboard', meta: { title: 'dashboard' } } as unknown as RouteLocationMatched].concat(matched)
+    matched = [{ path: '/home', meta: { title: 'home' } } as unknown as RouteLocationMatched].concat(matched)
   }
   breadcrumbs.value = matched.filter((item) => {
     return item.meta && item.meta.title && item.meta.breadcrumb !== false
@@ -56,7 +56,7 @@ const isDashboard = (route: RouteRecordRaw | String | any) => {
   if (!name) {
     return false
   }
-  return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
+  return name.trim().toLocaleLowerCase() === 'Home'.toLocaleLowerCase()
 }
 const pathCompile = (path: string) => {
   const { params } = route

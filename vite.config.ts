@@ -3,11 +3,19 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+// import AutoImport from 'unplugin-auto-import/vite'  // 自动导入composition api 和 生成全局typescript说明
+// import Components from 'unplugin-vue-components/vite'  // 组件库按需引入1
+// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers' // 组件库按需引入1
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
-
+import ViteComponents, { ElementPlusResolver } from 'vite-plugin-components'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import {
+  createStyleImportPlugin,
+  ElementPlusResolve,
+  AndDesignVueResolve,
+  VantResolve,
+  VxeTableResolve,
+} from 'vite-plugin-style-import';
 // import { loadEnv, createProxy } from "./src/utils/load-env"
 // const { VITE_URL, VITE_BASE_URL, VITE_ZIP_NAME } = loadEnv(mode)
 const mockServerPort = 9527
@@ -17,14 +25,43 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
+    // 组件库按需引入1
+    // AutoImport({
+    //   resolvers: [ElementPlusResolver()],
+    // }),
+    // Components({
+    //   resolvers: [ElementPlusResolver()],
+    // }),
+    //按需导入element-plus组件
+    ViteComponents({
+      customComponentResolvers: [ElementPlusResolver()],
     }),
     VueI18n({
       include: resolve(__dirname, './src/lang/**'),
+    }),
+    createStyleImportPlugin({
+      resolves: [
+        ElementPlusResolve(),
+        AndDesignVueResolve(),
+        VantResolve(),
+        VxeTableResolve()
+      ],
+      // libs: [
+      //   {
+      //     libraryName: 'element-plus',
+      //     esModule: true,
+      //     resolveStyle: (name) => {
+      //       return `element-plus/es/${name}/style/index`
+      //     },
+      //   },
+
+      // ]
+    }),
+    createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
+      iconDirs: [resolve(process.cwd(), 'src/icons/svg')],
+      // 指定symbolId格式
+      symbolId: 'icon-[dir]-[name]',
     })
   ],
   logLevel: 'info',

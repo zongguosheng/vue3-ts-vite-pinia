@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>home---------6666666666666666666666</h2>
+    <h2>首页</h2>
   </div>
 </template>
 
@@ -14,9 +14,5 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <style>
-.container {
-  height: 300px;
-  background: #007aff;
-}
   
 </style>

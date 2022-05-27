@@ -35,13 +35,13 @@ export const appModule = defineStore('appModule', {
         setSidebarStatus('closed')
       }
     },
-    CloseSideBar(state:IAppState, withoutAnimation: boolean) {
-      state.sidebar.opened = false
-      state.sidebar.withoutAnimation = withoutAnimation
+    CloseSideBar(withoutAnimation: boolean) {
+      this.sidebar.opened = false
+      this.sidebar.withoutAnimation = withoutAnimation
       setSidebarStatus('closed')
     },
-    ToggleDevice(state:IAppState, device: DeviceType) {
-      state.device = device
+    ToggleDevice(device: DeviceType) {
+      this.device = device
     },
     SetLanguage(state:IAppState, language: string) {
       state.language = language
