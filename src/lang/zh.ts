@@ -39,6 +39,8 @@ export default {
     'menu1-3': '菜单 1-3',
     menu2: '菜单 2',
     table: '表格',
+    eltable: 'el表格',
+    vxtable: 'vx表格',
     dynamicTable: '动态表格',
     draggableTable: '可拖拽表格',
     inlineEditTable: '表格内编辑',

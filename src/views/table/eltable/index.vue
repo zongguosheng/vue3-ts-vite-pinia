@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>首页</h2>
+    <h2>ElTable</h2>
   </div>
 </template>
 

@@ -28,7 +28,7 @@
       :index="resolvePath(item.path)"
       popper-append-to-body
     >
-      <template slot="title">
+      <template #title>
         <svg-icon
           v-if="item.meta && item.meta.icon"
           :name="item.meta.icon"
@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineProps, defineEmits } from 'vue'
+import { computed, defineProps, defineEmits, onMounted  } from 'vue'
 import path from 'path-browserify'
 // import type { RouteRecordRaw } from 'vue-router'
 import { isExternal } from '@/utils/validate'
@@ -76,6 +76,10 @@ const props = defineProps({
     type: String,
     default: ''
   }
+})
+
+onMounted(() => {
+  console.log('props.item', theOnlyOneChild)
 })
 const alwaysShowRootMenu = computed(() => {
   if (props.item.meta && props.item.meta.alwaysShow) {

@@ -10,11 +10,6 @@
             <!-- <img src="~@/assets/images/login-logo.png" class="title-logo" /> -->
             <h3 class="title">{{ $t('login.title') }}</h3>
           </div>
-          <el-form-item prop="ss">
-            <el-input v-model="input" placeholder="Please input">
-            <template #prepend>Http://</template>
-            </el-input>
-          </el-form-item>
           <el-form-item prop="username">
             <el-input
               ref="username"
@@ -31,7 +26,6 @@
                   <svg-icon name="user" />
                 </span>
               </template>
-              <!-- <span slot="prefix" class="svg-container"> <svg-icon name="user" /> </span> -->
             </el-input>
           </el-form-item>
 
@@ -76,7 +70,6 @@ import { onBeforeMount, ref, onMounted, reactive, nextTick } from 'vue'
 import type { ElForm } from 'element-plus'
 import { useRoute, useRouter } from "vue-router"
 import { useStore } from "@/stores/modules/user"
-// import { UserModule } from '@/store/modules/user'
 type FormInstance = InstanceType<typeof ElForm>
 const ruleFormRef = ref<FormInstance>()
 const router = useRouter();
@@ -143,6 +136,10 @@ const checkCapslock = (e: KeyboardEvent) => {
   .el-input {
     display: inline-block;
     height: 47px;
+    .el-input__wrapper {
+      width: 100%;
+      background: transparent;
+    }
     input {
       height: 47px;
       background: transparent;

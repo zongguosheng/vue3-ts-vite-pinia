@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue';
+import tablerouter from '@/views/table/router'
 export const constantRoutes:Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -34,6 +35,7 @@ export const constantRoutes:Array<RouteRecordRaw> = [
       }
     ]
   },
+  tablerouter,
   {
     path: '/404',
     component: () => import(/* webpackChunkName: "401" */ '@/views/error-page/404.vue'),
@@ -59,7 +61,7 @@ export const asyncRoutes = [
   //   ]
   // },
   {
-    path: '*',
+    path: '/:pathMatch(.*)*',
     redirect: '/404',
     meta: { hidden: true }
   }

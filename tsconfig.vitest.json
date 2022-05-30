@@ -3,6 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "lib": [],
+    "preserveValueImports": false,
     "paths": {
       "@/*": [ "src/*" ]
     },

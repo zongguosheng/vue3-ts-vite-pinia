@@ -7,11 +7,21 @@ import '@/styles/index.scss'
 // import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import svgIcon from "@/components/SvgIcon/index.vue"
 import 'virtual:svg-icons-register'
-import App from './App.vue'
+import APP from './App.vue'
 import router from './router'
 import _ from 'lodash'
 import { store } from "@/stores/index"
-const app = createApp(App)
+import 'xe-utils'
+import { VXETable,Footer, Column,Table} from 'vxe-table'
+// import zhCN from 'vxe-table/es/locale/lang/zh-CN'
+// VXETable.setup({
+//   i18n: (key, args) => XEUtils.toFormatString(XEUtils.get(zhCN, key), args)
+// })
+
+const app = createApp(APP)
+function useTable (app: any) {
+  app.use(Footer).use(Column).use(Table)
+}
 
 import * as icons from "@element-plus/icons-vue";
 for (const [key, component] of Object.entries(icons)) {
@@ -32,4 +42,4 @@ import i18n from '@/lang'
 app.config.globalProperties.$getLabel = getLabelv
 app.config.globalProperties.$log = logs
 // app.use(ElementPlus, {locale: zhCn,})
-app.use(store).use(router).component('svg-icon', svgIcon).use(i18n).mount('#app')
+app.use(store).use(router).use(useTable).component('svg-icon', svgIcon).use(i18n).mount('#app')
